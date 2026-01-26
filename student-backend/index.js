@@ -63,3 +63,7 @@ app.put('/students/:id', (req, res) => {
 app.listen(3000, () => {
   console.log('Server running on port 3000');
 });
+
+app.get("/", (req, res) => {
+  res.send("Student Management System Backend is running 🚀");
+});
