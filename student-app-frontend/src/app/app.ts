@@ -14,6 +14,7 @@ import { StudentService } from './services/student.service';
   templateUrl: './app.html',
   styleUrls: ['./app.css']
 })
+
 export class AppComponent {
   // Students list
   students$!: Observable<any[]>;
