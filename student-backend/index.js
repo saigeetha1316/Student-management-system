@@ -7,10 +7,10 @@ app.use(cors());
 app.use(express.json());
 
 const db = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'Root@123',   // your MySQL password
-  database: 'student_db'
+  host: process.env.DB_HOST || 'localhost',
+  user: process.env.DB_USER || 'root',
+  password: process.env.DB_PASSWORD || 'Root@123',
+  database: process.env.DB_NAME || 'student_db'
 });
 
 db.connect(err => {
@@ -60,10 +60,12 @@ app.put('/students/:id', (req, res) => {
   );
 });
 
-app.listen(3000, () => {
-  console.log('Server running on port 3000');
-});
-
 app.get("/", (req, res) => {
   res.send("Student Management System Backend is running 🚀");
+});
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
