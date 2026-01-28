@@ -1,7 +1,6 @@
+
 # Node
 node_modules/
 .env
 
-# Angular
 dist/
-.angular/
