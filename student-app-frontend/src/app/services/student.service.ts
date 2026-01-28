@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class StudentService {
-   private apiUrl = 'https://student-backend-api-nwqi.onrender.com/students';
+private apiUrl = 'https://student-backend-api-nwqi.onrender.com/students';
 
   constructor(private http: HttpClient) {}
 
