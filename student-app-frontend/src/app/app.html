@@ -3,7 +3,7 @@
   <div class="student-card">
 
     <!-- HEADER -->
-    <div class="header-block">
+    <div class="header-row">
   <h2 class="title">
     🎓 Student Management System
   </h2>
@@ -15,9 +15,16 @@
   </div>
 </div>
 
+<!-- SUCCESS MESSAGE -->
+              <div *ngIf="successMessage" class="success-toast">
+                           {{ successMessage }}
+             </div>
+
     <!-- STUDENT TABLE -->
      <div class="table-container">
-    <table >
+
+  <table class="table table-hover align-middle">
+
       <thead>
         <tr>
           <th>ID</th>

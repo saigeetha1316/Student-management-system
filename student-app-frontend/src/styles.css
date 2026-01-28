@@ -25,15 +25,18 @@
 }
 
 /* Header */
-.header-block {
-  margin-bottom: 25px;
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
 }
 
 .title {
   margin: 0;
-  font-size: 38px;
-  font-weight: 600;
+  font-weight: 700;
   color:white;
+  font-size:40px;
 }
 
 .add-btn-row {
@@ -91,10 +94,10 @@
 
 /* Table */
 .table-container {
-  background: #f8f9fc;
-  border-radius: 14px;
-  padding: 16px;
-  margin-top: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 10px;
+  border: 1px solid #e5e7eb;
 }
 
 table {
