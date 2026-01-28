@@ -10,25 +10,19 @@ private apiUrl = 'https://student-backend-api-nwqi.onrender.com/students';
 
   constructor(private http: HttpClient) {}
 
-  // Get all students
-  getStudents(): Observable<any[]> {
-    return this.http.get<any[]>(this.apiUrl);
-  }
-
-  // Add student
-  addStudent(student: any): Observable<any> {
-    return this.http.post(this.apiUrl, student);
-  }
-
-  // Delete student
-  deleteStudent(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/${id}`);
-  }
-
-  // ✅ UPDATE STUDENT (THIS WAS MISSING)
-  updateStudent(id: number, student: any): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}`, student);
-  }
+  getStudents() {
+  return this.http.get<any[]>(this.apiUrl);
 }
 
+addStudent(student: any) {
+  return this.http.post(this.apiUrl, student);
+}
 
+deleteStudent(id: number) {
+  return this.http.delete(`${this.apiUrl}/${id}`);
+}
+
+updateStudent(id: number, student: any) {
+  return this.http.put(`${this.apiUrl}/${id}`, student);
+}
+}
