@@ -110,9 +110,10 @@ table {
 thead th {
   color:black;
   font-weight: 600;
-  font-size: 15px;
+  font-size: 16px;
   text-transform: uppercase;
-  border-bottom: 2px solid #171616;
+  border-bottom: none;
+  background: linear-gradient(black, black) bottom / 100% 2px no-repeat;
   padding: 14px;
   
 }
