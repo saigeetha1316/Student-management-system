@@ -6,20 +6,29 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+const mysql = require('mysql2');
+
 const db = mysql.createConnection({
-  host: process.env.DB_HOST || 'localhost',
-  user: process.env.DB_USER || 'root',
-  password: process.env.DB_PASSWORD || 'Root@123',
-  database: process.env.DB_NAME || 'student_db'
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+  port: process.env.DB_PORT,
+  ssl: {
+    rejectUnauthorized: false
+  },
+  connectTimeout: 10000
 });
 
-db.connect(err => {
+db.connect((err) => {
   if (err) {
-    console.log(err);
-    return;
+    console.error('❌ MySQL connection failed:', err);
+  } else {
+    console.log('✅ Connected to Aiven MySQL');
   }
-  console.log('MySQL Connected');
 });
+
+module.exports = db;
 
 app.get('/students', (req, res) => {
   db.query('SELECT * FROM students', (err, results) => {
