@@ -1,0 +1,146 @@
+<!-- PAGE BACKGROUND -->
+<div class="page-bg">
+  <div class="student-card">
+
+    <!-- HEADER -->
+    <div class="header-row">
+  <h2 class="title">
+    🎓 Student Management System
+  </h2>
+
+  <div class="add-btn-row">
+    <button class="add-btn" (click)="openAddForm()">
+      + Add Student
+    </button>
+  </div>
+</div>
+
+<!-- SUCCESS MESSAGE -->
+              <div *ngIf="successMessage" class="success-toast">
+                           {{ successMessage }}
+             </div>
+
+    <!-- STUDENT TABLE -->
+     <div class="table-container">
+
+  <table class="table table-hover align-middle">
+
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Course</th>
+          <th class="actions-col">Actions</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr *ngFor="let student of (students$ | async)">
+          <td>{{ student.id }}</td>
+          <td>{{ student.name }}</td>
+          <td>{{ student.email }}</td>
+          <td>{{ student.course }}</td>
+
+        <td class="actions-col">
+           <div class="action-buttons">
+  <button class="edit-btn" (click)="openEditForm(student)">
+    Edit
+  </button>
+
+  <button class="delete-btn" (click)="deleteStudent(student.id)">
+    Delete
+  </button>
+</div>
+
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  </div>
+</div>
+
+<!-- ================= ADD STUDENT MODAL ================= -->
+<div class="modal-overlay" *ngIf="showAddForm">
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h4>Add Student</h4>
+      <button class="close-btn" (click)="closeAddForm()">✖</button>
+    </div>
+
+    <div class="modal-body">
+      <input
+        type="text"
+        placeholder="Name"
+        [(ngModel)]="newStudent.name"
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="newStudent.email"
+      />
+
+      <input
+        type="text"
+        placeholder="Course"
+        [(ngModel)]="newStudent.course"
+      />
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-dark" (click)="closeAddForm()">
+        Cancel
+      </button>
+
+      <button class="btn btn-success" (click)="addStudent()">
+        Save
+      </button>
+    </div>
+
+  </div>
+</div>
+
+<!-- ================= EDIT STUDENT MODAL ================= -->
+<div class="modal-overlay" *ngIf="showEditForm">
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h4>Edit Student</h4>
+      <button class="close-btn" (click)="closeEditForm()">✖</button>
+    </div>
+
+    <div class="modal-body">
+      <input
+        type="text"
+        placeholder="Name"
+        [(ngModel)]="editStudentData.name"
+      />
+
+      <input
+        type="email"
+        placeholder="Email"
+        [(ngModel)]="editStudentData.email"
+      />
+
+      <input
+        type="text"
+        placeholder="Course"
+        [(ngModel)]="editStudentData.course"
+      />
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn btn-dark" (click)="closeEditForm()">
+        Cancel
+      </button>
+
+      <button class="btn btn-success" (click)="updateStudent()">
+        Update
+      </button>
+    </div>
+
+  </div>
+</div>
