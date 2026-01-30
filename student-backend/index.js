@@ -29,6 +29,12 @@ module.exports = db;
 
 app.get('/students', (req, res) => {
   db.query('SELECT * FROM students', (err, results) => {
+    if (err) {
+      console.error("❌ Error fetching students:", err);
+      return res.status(500).json({ error: "Database error" });
+    }
+
+    console.log("📦 Students fetched:", results);
     res.json(results);
   });
 });
