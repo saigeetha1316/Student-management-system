@@ -25,8 +25,6 @@ db.connect(err => {
   }
 });
 
-module.exports = db;
-
 app.get('/students', (req, res) => {
   db.query('SELECT * FROM students', (err, results) => {
     if (err) {
